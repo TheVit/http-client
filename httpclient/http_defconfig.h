@@ -8,8 +8,7 @@
 
 #ifndef _DEFCONFIG_H_
 #define _DEFCONFIG_H_
-
-#include "../http_config.h"
+#include "../../http_config.h"
 
 #ifndef HTTP_DEFAULT_BUF_SIZE
     #define     HTTP_DEFAULT_BUF_SIZE               1024

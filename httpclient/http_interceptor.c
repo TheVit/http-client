@@ -594,7 +594,8 @@ int http_interceptor_process(http_interceptor_t *interceptor,
 	void *owner,
 	http_event_cb_t cb,
 	Response &response,
-	std::vector<std::string>headers, size_t timeOut)
+	std::vector<std::string>headers, 
+	size_t timeOut)
 {
 	int res = HTTP_SUCCESS_ERROR;
 	HTTP_ROBUSTNESS_CHECK((interceptor && connect_params && mothod), HTTP_NULL_VALUE_ERROR);

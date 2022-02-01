@@ -18,33 +18,33 @@
 #include <http_event.h>
 
 typedef enum http_interceptor_status {
-    http_interceptor_status_invalid = 0x00,
-    http_interceptor_status_init,
-    http_interceptor_status_connect,
-    http_interceptor_status_request,
-    http_interceptor_status_response_headers,
-    http_interceptor_status_headers_complete,
-    http_interceptor_status_response_body,
-    http_interceptor_status_response_complete,
-    http_interceptor_status_release
+	http_interceptor_status_invalid = 0x00,
+	http_interceptor_status_init,
+	http_interceptor_status_connect,
+	http_interceptor_status_request,
+	http_interceptor_status_response_headers,
+	http_interceptor_status_headers_complete,
+	http_interceptor_status_response_body,
+	http_interceptor_status_response_complete,
+	http_interceptor_status_release
 } http_interceptor_status_t;
 
 typedef struct http_interceptor {
-    network_t                   *network;
-    http_connect_params_t       *connect_params;
-    http_request_t              request;
-    http_response_t             response;
-    http_interceptor_status_t   status;
-    http_message_buffer_t       *message;
-    char                        *buffer;
-    size_t                      buffer_len;
-    size_t                      cmd_timeout;
-    size_t                      data_process;
-    struct http_parser          *parser;
-    struct http_parser_settings *parser_settings;
-    http_event_t                *event;
-    void                        *owner;
-    HTTP_GENERAL_FLAG;
+	network_t                   *network;
+	http_connect_params_t       *connect_params;
+	http_request_t              request;
+	http_response_t             response;
+	http_interceptor_status_t   status;
+	http_message_buffer_t       *message;
+	char                        *buffer;
+	size_t                      buffer_len;
+	size_t                      cmd_timeout;
+	size_t                      data_process;
+	struct http_parser          *parser;
+	struct http_parser_settings *parser_settings;
+	http_event_t                *event;
+	void                        *owner;
+	HTTP_GENERAL_FLAG;
 } http_interceptor_t;
 
 struct Response
@@ -62,15 +62,16 @@ void http_interceptor_event_register(http_interceptor_t *interceptor, http_event
 int http_interceptor_connect(http_interceptor_t *interceptor);
 void http_interceptor_set_keep_alive(http_interceptor_t *interceptor);
 int http_interceptor_set_connect_params(http_interceptor_t *interceptor, http_connect_params_t *conn_param);
-int http_interceptor_request(http_interceptor_t *interceptor, http_request_method_t mothod, const char *post_buf, std::vector<std::string>headers= std::vector<std::string>());
+int http_interceptor_request(http_interceptor_t *interceptor, http_request_method_t mothod, const char *post_buf, std::vector<std::string>headers = std::vector<std::string>());
 int http_interceptor_release(http_interceptor_t *interceptor);
 int http_interceptor_process(http_interceptor_t *interceptor,
-                             http_connect_params_t *connect_params,
-                             http_request_method_t mothod, 
-                             void *post_buf,
-                             void *owner,
-                             http_event_cb_t cb,
-							 Response &response,
-							 std::vector<std::string>headers=std::vector<std::string>(),size_t timeOut);
+	http_connect_params_t *connect_params,
+	http_request_method_t mothod,
+	void *post_buf,
+	void *owner,
+	http_event_cb_t cb,
+	Response &response,
+	std::vector<std::string>headers = std::vector<std::string>(),
+	size_t timeOut = 1000 * 20);
 
 #endif // !_HTTP_INTERCEPTOR_H_
