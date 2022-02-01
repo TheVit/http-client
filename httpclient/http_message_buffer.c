@@ -18,7 +18,7 @@ void http_message_buffer_grow(http_message_buffer_t *buf, size_t newsize)
         /* if it's not big enough already... */
         buf->length = ((newsize / HTTP_MESSAGE_BUFFER_GROWTH) + 1) * HTTP_MESSAGE_BUFFER_GROWTH;
 
-        buf->data = platform_memory_realloc(buf->data, buf->length);
+        buf->data = (char*)platform_memory_realloc(buf->data, buf->length);
     }
 }
 
@@ -31,7 +31,7 @@ http_message_buffer_t *http_message_buffer_init(size_t size)
 
     buf = (http_message_buffer_t *)platform_memory_alloc(sizeof(http_message_buffer_t));
     
-    buf->data = platform_memory_alloc(size);
+    buf->data = (char*)platform_memory_alloc(size);
     buf->data[0] = '\0';
     buf->length = size;
     buf->used = 1;      /* use 1 byte space in advance to prevent overflow */     
@@ -45,7 +45,7 @@ int http_message_buffer_reinit(http_message_buffer_t *buf)
 
     if (0 == buf->length) {
         buf->length = HTTP_MESSAGE_BUFFER_GROWTH;
-        buf->data = platform_memory_alloc(HTTP_MESSAGE_BUFFER_GROWTH);
+        buf->data = (char*)platform_memory_alloc(HTTP_MESSAGE_BUFFER_GROWTH);
         HTTP_ROBUSTNESS_CHECK((buf->data), HTTP_MEM_NOT_ENOUGH_ERROR);
     }
     

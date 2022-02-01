@@ -27,6 +27,10 @@
     #define INFO_LEVEL      (WARN_LEVEL + 1)
     #define DEBUG_LEVEL     (INFO_LEVEL + 1)
 
+#ifndef _DEBUG
+#define INFO_LEVEL BASE_LEVEL
+#endif
+
 #if LOG_LEVEL < DEBUG_LEVEL
     #define HTTP_LOG_D(fmt, ...)
 #else

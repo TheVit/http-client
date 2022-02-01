@@ -27,7 +27,7 @@ http_connect_params_t *http_assign_connect_params(void)
     int len = sizeof(http_connect_params_t);
     http_connect_params_t *connect_params = NULL;
 
-    connect_params = platform_memory_alloc(len);
+    connect_params = (http_connect_params_t*)platform_memory_alloc(len);
     memset(connect_params, 0, len);
 
     return connect_params;

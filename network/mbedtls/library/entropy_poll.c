@@ -32,6 +32,8 @@
 
 #include <string.h>
 
+#undef MBEDTLS_ENTROPY_C
+
 #if defined(MBEDTLS_ENTROPY_C)
 
 #include "mbedtls/entropy.h"

@@ -5,6 +5,7 @@
  * @LastEditTime: 2020-06-02 17:41:32
  * @Description: the code belongs to jiejie, please keep the author information and source code according to the license.
  */
+
 #ifndef _HTTP_REQUEST_H_
 #define _HTTP_REQUEST_H_
 
@@ -80,6 +81,7 @@ int http_request_set_method(http_request_t *req,  http_request_method_t method);
 int http_request_set_start_line(http_request_t *req, const char *path);
 int http_request_set_start_line_with_query(http_request_t *req, const char *path, const char *query);
 int http_request_header_init(http_request_t *req);
+void http_request_add_header(http_request_t *req, const char *header);
 void http_request_add_header(http_request_t *req, const char *key, const char *value);
 void http_request_add_header_form_index(http_request_t *req, http_request_header_t index, const char *value);
 char *http_request_get_header(http_request_t *req, const char *key);

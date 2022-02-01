@@ -48,7 +48,7 @@ void http_response_set_offset(http_response_t *rsp, uint32_t offset)
 
 http_response_status_t http_response_get_status(http_response_t *rsp)
 {
-    HTTP_ROBUSTNESS_CHECK(rsp , HTTP_NULL_VALUE_ERROR);
+    //HTTP_ROBUSTNESS_CHECK(rsp , HTTP_NULL_VALUE_ERROR);
     return rsp->status;
 }
 

@@ -97,8 +97,8 @@ void routing_record(const char *host, const char *ip)
         routing->ip = NULL;
     }
 
-    routing->host = platform_memory_alloc(host_len);
-    routing->ip = platform_memory_alloc(ip_len);
+    routing->host = (char*)platform_memory_alloc(host_len);
+    routing->ip =(char*)platform_memory_alloc(ip_len);
 
     if ((NULL != routing->host) && (NULL != routing->ip)) {
         

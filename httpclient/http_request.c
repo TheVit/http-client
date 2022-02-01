@@ -83,7 +83,7 @@ int http_request_header_init(http_request_t *req)
     req->header_index = 0;
     http_message_buffer_reinit(req->req_msg.header);
 
-    http_request_add_header_form_index(req, HTTP_REQUEST_HEADER_USER_AGENT, "http-client-by-jiejie");
+    //http_request_add_header_form_index(req, HTTP_REQUEST_HEADER_USER_AGENT, "");
     http_request_add_header_form_index(req, HTTP_REQUEST_HEADER_ACCEPT, "*/*");
 
     if (req->flag.flag_t.keep_alive) {
@@ -144,6 +144,12 @@ int http_request_set_start_line_with_query(http_request_t *req, const char *path
     http_message_buffer_concat(req->req_msg.line, m, path, "?", query, " ", _http_request_version, HTTP_CRLF, NULL);
 
     RETURN_ERROR(HTTP_SUCCESS_ERROR);
+}
+
+/* adds a header to the request as a ready line */
+void http_request_add_header(http_request_t *req, const char *header)
+{
+	http_message_buffer_concat(req->req_msg.header, header, HTTP_CRLF, NULL);
 }
 
 /* adds a header to the request with given key and value. */

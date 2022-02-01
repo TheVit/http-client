@@ -21,7 +21,7 @@ platform_thread_t *platform_thread_init( const char *name,
     void *(*thread_entry) (void *);
 
     thread_entry = (void *(*)(void*))entry;
-    thread = platform_memory_alloc(sizeof(platform_thread_t));
+    thread = (platform_thread*)platform_memory_alloc(sizeof(platform_thread_t));
     memset(thread, 0, sizeof(platform_thread_t));
     
     res = pthread_create(&thread->thread, NULL, thread_entry, param);

@@ -52,7 +52,7 @@ int http_url_parsing(http_connect_params_t *connect_params, const char *url)
                 memcpy(port, DEFAULT_HTTPS_PORT, sizeof(DEFAULT_HTTPS_PORT));
                 connect_params->http_port = port;
             } else {
-                connect_params->http_port = DEFAULT_HTTPS_PORT;
+                connect_params->http_port = (char*)DEFAULT_HTTPS_PORT;
             }
         } else if(http_utils_ignore_case_match(connect_params->http_scheme, "http") == 0) {
             char *port = NULL;
@@ -62,7 +62,7 @@ int http_url_parsing(http_connect_params_t *connect_params, const char *url)
                 memcpy(port, DEFAULT_HTTP_PORT, sizeof(DEFAULT_HTTP_PORT));
                 connect_params->http_port = port;
             } else {
-                connect_params->http_port = DEFAULT_HTTP_PORT;
+                connect_params->http_port = (char*)DEFAULT_HTTP_PORT;
             }
         }
     }
@@ -127,8 +127,3 @@ int http_url_parsing(http_connect_params_t *connect_params, const char *url)
 
     RETURN_ERROR(HTTP_SUCCESS_ERROR);
 }
-
-
-
-
-

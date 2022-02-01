@@ -8,16 +8,21 @@
 #ifndef _PLATFORM_NET_SOCKET_H_
 #define _PLATFORM_NET_SOCKET_H_
 #include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/param.h>
-#include <sys/time.h>
-#include <sys/select.h>
-#include <netinet/in.h>
-#include <netinet/tcp.h>
-#include <arpa/inet.h>
-#include <netdb.h>
+#include <winsock2.h>
+#pragma comment(lib, "ws2_32.lib")
+#include <Ws2tcpip.h>
+
+ //#include <sys/socket.h>
+//#include <sys/param.h>
+//#include <sys/time.h>
+//#include <sys/select.h>
+//#include <netinet/in.h>
+//#include <netinet/tcp.h>
+//#include <arpa/inet.h>
+//#include <netdb.h>
 #include <stdio.h>
-#include <unistd.h>
+#include <io.h>
+//#include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
 

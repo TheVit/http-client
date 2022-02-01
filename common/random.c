@@ -29,7 +29,7 @@ char *random_string(unsigned int len)
 {
     unsigned int i, flag, seed, random;
 
-    char *str = platform_memory_alloc((size_t)(len + 1));
+    char *str = (char*)platform_memory_alloc((size_t)(len + 1));
     if (NULL == str)
         return NULL;
     

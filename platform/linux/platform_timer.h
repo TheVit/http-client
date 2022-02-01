@@ -8,10 +8,36 @@
 #ifndef _PLATFORM_TIMER_H_
 #define _PLATFORM_TIMER_H_
 
-#include <sys/time.h>
+#include <sys/timeb.h>
+//#include <sys/time.h>
 #include <stdio.h>
-#include <unistd.h>
+#include <io.h>
+//#include <unistd.h>
+#include <winsock2.h>
+#pragma comment(lib, "ws2_32.lib")
 #include <time.h>
+
+
+#define	timeradd(a, b, result)						      \
+  do {									      \
+    (result)->tv_sec = (a)->tv_sec + (b)->tv_sec;			      \
+    (result)->tv_usec = (a)->tv_usec + (b)->tv_usec;			      \
+    if ((result)->tv_usec >= 1000000)					      \
+      {									      \
+	++(result)->tv_sec;						      \
+	(result)->tv_usec -= 1000000;					      \
+      }									      \
+  } while (0)
+#define	timersub(a, b, result)						      \
+  do {									      \
+    (result)->tv_sec = (a)->tv_sec - (b)->tv_sec;			      \
+    (result)->tv_usec = (a)->tv_usec - (b)->tv_usec;			      \
+    if ((result)->tv_usec < 0) {					      \
+      --(result)->tv_sec;						      \
+      (result)->tv_usec += 1000000;					      \
+    }									      \
+  } while (0)
+
 
 typedef struct platform_timer {
     struct timeval time;

@@ -139,9 +139,9 @@ char *http_utils_assign_string(char **str, const char *new_str, int len)
     }
 
     if (old_str) {
-        old_str = platform_memory_realloc(old_str, l + 1);
+        old_str = (char*)platform_memory_realloc(old_str, l + 1);
     } else {
-        old_str = platform_memory_alloc(l + 1);
+        old_str = (char*)platform_memory_alloc(l + 1);
     }
 
     if (NULL != old_str) {
